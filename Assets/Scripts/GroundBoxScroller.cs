@@ -1,14 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GroundScroller : MonoBehaviour {
+public class GroundBoxScroller : MonoBehaviour {
 
 	public float scrollSpeed;
-	public float tileSizeY;
-
-	void Start () {
-
-	}
 
 	void FixedUpdate () {
 //		float newPosition = Mathf.Repeat (Time.time * scrollSpeed, tileSizeY);

@@ -18,6 +18,9 @@ public class GameController : MonoBehaviour {
 	public float groundWidth;
 	public SpriteRenderer sr;
 
+	public static int repositionCount = 0;
+	public int showPipesCount = 2;
+
 	private static GameController instance;
 
 	public static GameController Instance() {
