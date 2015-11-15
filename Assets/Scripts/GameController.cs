@@ -4,18 +4,21 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 
-	private static GameController instance;
-
 	public Button pause;
 	public Button resume;
 
 	public GameObject readyObjs;
+	public GameObject ground;
 	public Rigidbody2D rb2D;
 
 	public float force = 5f;
 	public float gravityScale = 1f;
 
 	public bool isGameStarted;
+	public float groundWidth;
+	public SpriteRenderer sr;
+
+	private static GameController instance;
 
 	public static GameController Instance() {
 		if (!instance) {
@@ -32,6 +35,8 @@ public class GameController : MonoBehaviour {
 		resume.gameObject.SetActive (false);
 		isGameStarted = false;
 		rb2D.gravityScale = 0f;
+		sr = ground.GetComponent<SpriteRenderer> ();
+		groundWidth = sr.bounds.size.x;
 	}
 
 	void Update () {

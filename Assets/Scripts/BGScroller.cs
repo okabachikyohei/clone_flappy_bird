@@ -3,19 +3,19 @@ using System.Collections;
 
 public class BGScroller : MonoBehaviour {
 
-	public float scrollSpeed;
-	public float tileSizeY;
+	public float scrollSpeed = 0.5f;
 
 	Vector3 startPosition;
+	Renderer bgRenderer;
 
 	// Use this for initialization
 	void Start () {
-		startPosition = transform.position;
+		bgRenderer = GetComponent<Renderer> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		float newPosition = Mathf.Repeat (Time.time * scrollSpeed, tileSizeY);
-		transform.position = startPosition + Vector3.left * newPosition;
+		Vector2 offset = new Vector2 (Time.time * scrollSpeed , 0.0f);
+		bgRenderer.material.mainTextureOffset = offset;
 	}
 }
