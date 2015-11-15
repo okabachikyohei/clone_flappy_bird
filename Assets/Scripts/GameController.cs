@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
 	public float gravityScale = 1f;
 
 	public bool isGameStarted;
+	public bool isGameOver;
 	public float groundWidth;
 	public SpriteRenderer sr;
 
@@ -37,6 +38,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		resume.gameObject.SetActive (false);
 		isGameStarted = false;
+		isGameOver = false;
 		rb2D.gravityScale = 0f;
 		sr = ground.GetComponent<SpriteRenderer> ();
 		groundWidth = sr.bounds.size.x;
