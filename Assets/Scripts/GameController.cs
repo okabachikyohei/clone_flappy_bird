@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour {
 	public SpriteRenderer sr;
 
 	public static int repositionCount = 0;
-	public int showPipesCount = 2;
+	public int showPipesCount = 1;
 
 	private static GameController instance;
 
