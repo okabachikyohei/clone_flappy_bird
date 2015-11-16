@@ -17,10 +17,8 @@ public class BirdOnTrigger : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter2d(Collider2D other) {
-		Debug.Log ("trigger enter");
+	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Obstacle") {
-			Debug.Log ("Obstacle trigger enter");
 			gameController.isGameOver = true;
 		}
 	}
