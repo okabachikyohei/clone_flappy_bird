@@ -13,13 +13,19 @@ public class BirdOnTrigger : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "Obstacle") {
-			gameController.isGameOver = true;
+			gameOver();
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Obstacle") {
-			gameController.isGameOver = true;
+			gameOver();
 		}
+	}
+
+	private void gameOver () {
+		gameController.isGameOver = true;
+		gameController.FadeInGameOverImg ();
+		gameController.pauseResumePanel.SetActive(false);
 	}
 }

@@ -21,8 +21,13 @@ public class GameController : MonoBehaviour {
 	public static int repositionCount = 0;
 	public int showPipesCount = 1;
 
-	public GameObject gameStartpanel;
-	private Animator startGameAnmi;
+	public GameObject gameStartPanel;
+	public GameObject pauseResumePanel;
+	public GameObject gameOverPanel;
+	public GameObject medalPanel;
+
+	private Animator startGameAnim;
+	private Animator gameOverAnim;
 
 	private static GameController instance;
 
@@ -44,14 +49,15 @@ public class GameController : MonoBehaviour {
 		rb2D.gravityScale = 0f;
 		sr = ground.GetComponent<SpriteRenderer> ();
 		groundWidth = sr.bounds.size.x;
-		startGameAnmi = gameStartpanel.GetComponent<Animator> ();
+		startGameAnim = gameStartPanel.GetComponent<Animator> ();
+		gameOverAnim = gameOverPanel.GetComponent<Animator> ();
 	}
 
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
 			if (!isGameStarted) {
 				isGameStarted = true;
-				startGameAnmi.SetTrigger("FadeOutGameStartPanel");
+				startGameAnim.SetTrigger("FadeOutGameStartPanel");
 				rb2D.gravityScale = gravityScale;
 			}
 		}
@@ -69,5 +75,9 @@ public class GameController : MonoBehaviour {
 		pause.gameObject.SetActive (true);
 
 		Time.timeScale = 1;
+	}
+
+	public void FadeInGameOverImg() {
+		gameOverAnim.SetTrigger ("ShowGameOver");
 	}
 }
