@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour {
 	public GameObject gameStartPanel;
 	public GameObject pauseResumePanel;
 	public GameObject gameOverPanel;
-	public GameObject medalPanel;
+	public GameObject resultPanel;
 
 	private Animator startGameAnim;
 	private Animator gameOverAnim;
@@ -79,5 +79,9 @@ public class GameController : MonoBehaviour {
 
 	public void FadeInGameOverImg() {
 		gameOverAnim.SetTrigger ("ShowGameOver");
+	}
+
+	public void OnOkClicked () {
+		Application.LoadLevel (Application.loadedLevel);
 	}
 }
