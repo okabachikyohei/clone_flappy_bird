@@ -82,6 +82,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void OnOkClicked () {
-		Application.LoadLevel (Application.loadedLevel);
+		FadeManager.Instance.LoadLevel ("Open", 0.3f);
 	}
+
 }

@@ -3,6 +3,6 @@ using System.Collections;
 
 public class StartGame : MonoBehaviour {
 	public void Play () {
-		Application.LoadLevel (1);
+		FadeManager.Instance.LoadLevel ("Main", 0.3f);
 	}
 }

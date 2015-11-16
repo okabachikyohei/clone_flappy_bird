@@ -27,5 +27,6 @@ public class BirdOnTrigger : MonoBehaviour {
 		gameController.isGameOver = true;
 		gameController.FadeInGameOverImg ();
 		gameController.pauseResumePanel.SetActive(false);
+		GameController.repositionCount = 0;
 	}
 }
