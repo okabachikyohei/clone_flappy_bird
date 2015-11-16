@@ -90,18 +90,19 @@ public class GameController : MonoBehaviour {
 	public void GameOver () {
 		isGameOver = true;
 		gameOverAnim.SetTrigger ("ShowGameOver");
-		pauseResumePanel.SetActive(false);
-		pointPanel.SetActive (false);
-		repositionCount = 0;
-		medalPointText.text = gamePoint.ToString ("0");
-		highestPoint = gamePoint >= highestPoint ? gamePoint : highestPoint;
-		highestPointText.text = highestPoint.ToString ("0");
-//		gamePoint = 0;
 	}
 
 	public void AddPoint () {
 		gamePoint++;
 		pointText.text = gamePoint.ToString ("0");
 	}
-
+	
+	public void SetVaulesAfterGameOverAnimation() {
+		pauseResumePanel.SetActive(false);
+		pointPanel.SetActive (false);
+		repositionCount = 0;
+		medalPointText.text = gamePoint.ToString ("0");
+		highestPoint = gamePoint >= highestPoint ? gamePoint : highestPoint;
+		highestPointText.text = highestPoint.ToString ("0");
+	}
 }
