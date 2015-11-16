@@ -6,8 +6,7 @@ public class GameController : MonoBehaviour {
 
 	public Button pause;
 	public Button resume;
-
-	public GameObject readyObjs;
+	
 	public GameObject ground;
 	public Rigidbody2D rb2D;
 
@@ -21,6 +20,9 @@ public class GameController : MonoBehaviour {
 
 	public static int repositionCount = 0;
 	public int showPipesCount = 1;
+
+	public GameObject gameStartpanel;
+	private Animator startGameAnmi;
 
 	private static GameController instance;
 
@@ -42,13 +44,14 @@ public class GameController : MonoBehaviour {
 		rb2D.gravityScale = 0f;
 		sr = ground.GetComponent<SpriteRenderer> ();
 		groundWidth = sr.bounds.size.x;
+		startGameAnmi = gameStartpanel.GetComponent<Animator> ();
 	}
 
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
 			if (!isGameStarted) {
 				isGameStarted = true;
-				readyObjs.SetActive(false);
+				startGameAnmi.SetTrigger("FadeOutGameStartPanel");
 				rb2D.gravityScale = gravityScale;
 			}
 		}
