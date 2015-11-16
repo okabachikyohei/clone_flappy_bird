@@ -8,5 +8,6 @@ public class GameOverPanel : MonoBehaviour {
 
 	public void InteractOkButton () {
 		okButton.interactable = true;
+		GameController.gamePoint = 0;
 	}
 }

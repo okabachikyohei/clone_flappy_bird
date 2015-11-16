@@ -11,20 +11,18 @@ public class BirdOnTrigger : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "Obstacle") {
-			gameOver();
+			gameController.GameOver();
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Obstacle") {
-			gameOver();
+			gameController.GameOver();
+		}
+
+		if (other.gameObject.tag == "PointCollider" && gameController.isGameStarted) {
+			gameController.AddPoint();
 		}
 	}
-
-	private void gameOver () {
-		gameController.isGameOver = true;
-		gameController.FadeInGameOverImg ();
-		gameController.pauseResumePanel.SetActive(false);
-		GameController.repositionCount = 0;
-	}
+	
 }

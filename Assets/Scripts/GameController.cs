@@ -20,11 +20,17 @@ public class GameController : MonoBehaviour {
 
 	public static int repositionCount = 0;
 	public int showPipesCount = 1;
+	public static int gamePoint = 0;
+	public static int highestPoint = 0;
 
 	public GameObject gameStartPanel;
 	public GameObject pauseResumePanel;
 	public GameObject gameOverPanel;
 	public GameObject resultPanel;
+	public GameObject pointPanel;
+	public Text pointText;
+	public Text medalPointText;
+	public Text highestPointText;
 
 	private Animator startGameAnim;
 	private Animator gameOverAnim;
@@ -77,12 +83,25 @@ public class GameController : MonoBehaviour {
 		Time.timeScale = 1;
 	}
 
-	public void FadeInGameOverImg() {
-		gameOverAnim.SetTrigger ("ShowGameOver");
-	}
-
 	public void OnOkClicked () {
 		FadeManager.Instance.LoadLevel ("Open", 0.3f);
+	}
+
+	public void GameOver () {
+		isGameOver = true;
+		gameOverAnim.SetTrigger ("ShowGameOver");
+		pauseResumePanel.SetActive(false);
+		pointPanel.SetActive (false);
+		repositionCount = 0;
+		medalPointText.text = gamePoint.ToString ("0");
+		highestPoint = gamePoint >= highestPoint ? gamePoint : highestPoint;
+		highestPointText.text = highestPoint.ToString ("0");
+//		gamePoint = 0;
+	}
+
+	public void AddPoint () {
+		gamePoint++;
+		pointText.text = gamePoint.ToString ("0");
 	}
 
 }
