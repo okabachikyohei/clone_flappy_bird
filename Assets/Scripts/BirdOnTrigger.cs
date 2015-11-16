@@ -2,12 +2,10 @@
 using System.Collections;
 
 public class BirdOnTrigger : MonoBehaviour {
-
-	Rigidbody2D rb2D;
+	
 	GameController gameController;
 
 	void Start() {
-		rb2D = GetComponent<Rigidbody2D> ();
 		gameController = GameController.Instance ();
 	}
 
