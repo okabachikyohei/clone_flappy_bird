@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class Flapping : MonoBehaviour {
 
@@ -17,6 +18,9 @@ public class Flapping : MonoBehaviour {
 	void Update () {
 
 		if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
+//			if (!EventSystem.current.IsPointerOverGameObject()) {
+//				rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
+//			}
 			rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
 		}
 

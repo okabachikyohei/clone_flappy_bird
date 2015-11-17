@@ -105,4 +105,5 @@ public class GameController : MonoBehaviour {
 		highestPoint = gamePoint >= highestPoint ? gamePoint : highestPoint;
 		highestPointText.text = highestPoint.ToString ("0");
 	}
+	
 }
