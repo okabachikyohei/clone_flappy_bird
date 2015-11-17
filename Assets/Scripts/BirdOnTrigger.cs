@@ -11,14 +11,12 @@ public class BirdOnTrigger : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) {
 		if (!gameController.isGameOver && other.gameObject.tag == "Obstacle") {
-			Debug.Log("hit ground");
 			gameController.GameOver();
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (!gameController.isGameOver && other.gameObject.tag == "Obstacle") {
-			Debug.Log("hit pipe");
 			gameController.GameOver();
 		}
 
