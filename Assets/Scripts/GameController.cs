@@ -4,9 +4,9 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 
-	public Button pause;
-	public Button resume;
-	public Button newBtn;
+	public Button pauseBtn;
+	public Button resumeBtn;
+	public Button menuBtn;
 
 	public GameObject player;
 	public GameObject ground;
@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour {
 	private Animator gameOverAnim;
 	private Animator birdAnim;
 
-	private CanvasGroup newBtnCanvasGroup;
+	private CanvasGroup menuBtnCanvasGroup;
 
 	private static GameController instance;
 
@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour {
 	}
 	
 	void Start () {
-		resume.gameObject.SetActive (false);
+		resumeBtn.gameObject.SetActive (false);
 		isGameStarted = false;
 		isGameOver = false;
 		isGamePaused = false;
@@ -71,26 +71,28 @@ public class GameController : MonoBehaviour {
 		groundWidth = sr.bounds.size.x;
 		gameOverAnim = gameOverPanel.GetComponent<Animator> ();
 		birdAnim = player.GetComponent<Animator> ();
-		newBtnCanvasGroup = newBtn.GetComponent<CanvasGroup> ();
+		menuBtnCanvasGroup = menuBtn.GetComponent<CanvasGroup> ();
 	}
 
 	public void OnPauseClicked() {
 		isGamePaused = true;
-		resume.gameObject.SetActive (true);
-		pause.gameObject.SetActive (false);
+		resumeBtn.gameObject.SetActive (true);
+		pauseBtn.gameObject.SetActive (false);
+//		menuBtn.gameObject.SetActive (true);
 		screenPanel.SetActive (true);
-		newBtnCanvasGroup.alpha = 1;
-		newBtnCanvasGroup.interactable = true;
+		menuBtnCanvasGroup.alpha = 1;
+		menuBtnCanvasGroup.interactable = true;
 		Time.timeScale = 0;
 	}
 
 	public void OnResumeClicked() {
 		isGamePaused = false;
-		resume.gameObject.SetActive (false);
-		pause.gameObject.SetActive (true);
+		resumeBtn.gameObject.SetActive (false);
+		pauseBtn.gameObject.SetActive (true);
+//		menuBtn.gameObject.SetActive (false);
 		screenPanel.SetActive (false);
-		newBtnCanvasGroup.alpha = 0;
-		newBtnCanvasGroup.interactable = false;
+		menuBtnCanvasGroup.alpha = 0;
+		menuBtnCanvasGroup.interactable = false;
 		Time.timeScale = 1;
 	}
 
@@ -138,7 +140,7 @@ public class GameController : MonoBehaviour {
 			medalImage.sprite = medalBronze;
 		} else if (gamePoint >= 30 && gamePoint < 39) {
 			medalImage.sprite = medalSilver;
-		} else if (gamePoint >= 40 && gamePoint < 49) {
+		} else if (gamePoint >= 40) {
 			medalImage.sprite = medalGold;
 		}
 	}
