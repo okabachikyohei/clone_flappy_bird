@@ -22,8 +22,7 @@ public class GameController : MonoBehaviour {
 	public int showPipesCount = 1;
 	public static int gamePoint = 0;
 	public static int highestPoint = 0;
-
-	public GameObject gameStartPanel;
+	
 	public GameObject pauseResumePanel;
 	public GameObject gameOverPanel;
 	public GameObject resultPanel;
@@ -32,7 +31,7 @@ public class GameController : MonoBehaviour {
 	public Text medalPointText;
 	public Text highestPointText;
 
-	private Animator startGameAnim;
+	public Animator startGameAnim;
 	private Animator gameOverAnim;
 
 	private static GameController instance;
@@ -55,18 +54,7 @@ public class GameController : MonoBehaviour {
 		rb2D.gravityScale = 0f;
 		sr = ground.GetComponent<SpriteRenderer> ();
 		groundWidth = sr.bounds.size.x;
-		startGameAnim = gameStartPanel.GetComponent<Animator> ();
 		gameOverAnim = gameOverPanel.GetComponent<Animator> ();
-	}
-
-	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
-			if (!isGameStarted) {
-				isGameStarted = true;
-				startGameAnim.SetTrigger("FadeOutGameStartPanel");
-				rb2D.gravityScale = gravityScale;
-			}
-		}
 	}
 
 	public void OnPauseClicked() {
@@ -104,6 +92,7 @@ public class GameController : MonoBehaviour {
 		medalPointText.text = gamePoint.ToString ("0");
 		highestPoint = gamePoint >= highestPoint ? gamePoint : highestPoint;
 		highestPointText.text = highestPoint.ToString ("0");
+		gamePoint = 0;
 	}
 	
 }
