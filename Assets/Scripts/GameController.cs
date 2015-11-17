@@ -34,7 +34,12 @@ public class GameController : MonoBehaviour {
 	public Text pointText;
 	public Text medalPointText;
 	public Text highestPointText;
-	
+	public Image medalImage;
+	public Sprite medalNormal;
+	public Sprite medalBronze;
+	public Sprite medalSilver;
+	public Sprite medalGold;
+
 	public PerlinShake perlinShake;
 
 	public Animator startGameAnim;
@@ -94,8 +99,8 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void OnMenuClicked () {
-//		screenPanel.SetActive (false);
-//		FadeManager.Instance.LoadLevel ("Open", 0.3f);
+		OnResumeClicked();
+		FadeManager.Instance.LoadLevel ("Open", 0.3f);
 	}
 
 	public void GameOver () {
@@ -114,11 +119,28 @@ public class GameController : MonoBehaviour {
 	public void SetVaulesAfterGameOverAnimation() {
 		pauseResumePanel.SetActive(false);
 		pointPanel.SetActive (false);
+		SetMedalImage ();
 		repositionCount = 0;
 		medalPointText.text = gamePoint.ToString ("0");
 		highestPoint = gamePoint >= highestPoint ? gamePoint : highestPoint;
 		highestPointText.text = highestPoint.ToString ("0");
 		gamePoint = 0;
+	}
+
+	private void SetMedalImage() {
+		if (gamePoint >= 10) {
+			medalImage.gameObject.SetActive(true);
+		}
+
+		if (gamePoint >= 10 && gamePoint < 19) {
+			medalImage.sprite = medalNormal;
+		} else if (gamePoint >= 20 && gamePoint < 29) {
+			medalImage.sprite = medalBronze;
+		} else if (gamePoint >= 30 && gamePoint < 39) {
+			medalImage.sprite = medalSilver;
+		} else if (gamePoint >= 40 && gamePoint < 49) {
+			medalImage.sprite = medalGold;
+		}
 	}
 	
 }

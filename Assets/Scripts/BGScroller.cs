@@ -8,14 +8,12 @@ public class BGScroller : MonoBehaviour {
 	Vector3 startPosition;
 	Renderer bgRenderer;
 	GameController gameController;
-
-	// Use this for initialization
+	
 	void Start () {
 		bgRenderer = GetComponent<Renderer> ();
 		gameController = GameController.Instance ();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		if (gameController.isGameOver)
 			return;
