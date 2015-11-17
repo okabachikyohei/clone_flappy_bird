@@ -6,7 +6,8 @@ public class GameController : MonoBehaviour {
 
 	public Button pause;
 	public Button resume;
-	
+
+	public GameObject player;
 	public GameObject ground;
 	public Rigidbody2D rb2D;
 
@@ -33,6 +34,7 @@ public class GameController : MonoBehaviour {
 
 	public Animator startGameAnim;
 	private Animator gameOverAnim;
+	private Animator birdAnim;
 
 	private static GameController instance;
 
@@ -55,6 +57,7 @@ public class GameController : MonoBehaviour {
 		sr = ground.GetComponent<SpriteRenderer> ();
 		groundWidth = sr.bounds.size.x;
 		gameOverAnim = gameOverPanel.GetComponent<Animator> ();
+		birdAnim = player.GetComponent<Animator> ();
 	}
 
 	public void OnPauseClicked() {
@@ -77,6 +80,7 @@ public class GameController : MonoBehaviour {
 
 	public void GameOver () {
 		isGameOver = true;
+		birdAnim.SetTrigger ("PlayerDead");
 		gameOverAnim.SetTrigger ("ShowGameOver");
 	}
 

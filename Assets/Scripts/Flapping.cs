@@ -28,6 +28,9 @@ public class Flapping : MonoBehaviour {
 					gameController.startGameAnim.SetTrigger("FadeOutGameStartPanel");
 					rb2D.gravityScale = gameController.gravityScale;
 				}
+				if (gameController.isGameOver) 
+					return;
+				
 				rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
 			}
 		}
