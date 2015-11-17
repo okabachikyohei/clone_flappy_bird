@@ -80,6 +80,7 @@ public class GameController : MonoBehaviour {
 
 	public void GameOver () {
 		isGameOver = true;
+		player.transform.rotation = Quaternion.Euler (0.0f, 0.0f, -90f);
 		birdAnim.SetTrigger ("PlayerDead");
 		gameOverAnim.SetTrigger ("ShowGameOver");
 	}

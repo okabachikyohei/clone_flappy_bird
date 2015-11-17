@@ -9,6 +9,7 @@ public class Flapping : MonoBehaviour {
 	public float jumpForce;
 	public float rotateSpeed;
 	public float maxFallSpeed;
+	public float rotateStopTime;
 
 	private Rigidbody2D rb2D;
 	private GameController gameController;
@@ -32,7 +33,12 @@ public class Flapping : MonoBehaviour {
 					return;
 				
 				rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
+				transform.rotation = Quaternion.Euler (0f, 0f, 45f);
 			}
+		}
+
+		if (gameController.isGameStarted) {
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, 0.0f, -90f), Time.deltaTime * rotateSpeed);
 		}
 
 //		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, 0.0f, -90f), Time.time * rotateSpeed);
