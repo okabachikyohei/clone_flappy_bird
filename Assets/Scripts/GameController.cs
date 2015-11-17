@@ -33,6 +33,8 @@ public class GameController : MonoBehaviour {
 	public Text pointText;
 	public Text medalPointText;
 	public Text highestPointText;
+	
+	public PerlinShake perlinShake;
 
 	public Animator startGameAnim;
 	private Animator gameOverAnim;
@@ -85,6 +87,7 @@ public class GameController : MonoBehaviour {
 
 	public void GameOver () {
 		isGameOver = true;
+		perlinShake.PlayShake ();
 		player.transform.rotation = Quaternion.Euler (0.0f, 0.0f, -90f);
 		birdAnim.SetTrigger ("PlayerDead");
 		gameOverAnim.SetTrigger ("ShowGameOver");

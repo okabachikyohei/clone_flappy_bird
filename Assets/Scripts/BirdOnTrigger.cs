@@ -10,7 +10,7 @@ public class BirdOnTrigger : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
-		if (other.gameObject.tag == "Obstacle") {
+		if (!gameController.isGameOver && other.gameObject.tag == "Obstacle") {
 			gameController.GameOver();
 		}
 	}
