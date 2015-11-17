@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 
 	public bool isGameStarted;
 	public bool isGameOver;
+	public bool isGamePaused;
 	public float groundWidth;
 	public SpriteRenderer sr;
 
@@ -28,6 +29,7 @@ public class GameController : MonoBehaviour {
 	public GameObject gameOverPanel;
 	public GameObject resultPanel;
 	public GameObject pointPanel;
+	public GameObject screenPanel;
 	public Text pointText;
 	public Text medalPointText;
 	public Text highestPointText;
@@ -53,6 +55,7 @@ public class GameController : MonoBehaviour {
 		resume.gameObject.SetActive (false);
 		isGameStarted = false;
 		isGameOver = false;
+		isGamePaused = false;
 		rb2D.gravityScale = 0f;
 		sr = ground.GetComponent<SpriteRenderer> ();
 		groundWidth = sr.bounds.size.x;
@@ -61,16 +64,18 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void OnPauseClicked() {
+		isGamePaused = true;
 		resume.gameObject.SetActive (true);
 		pause.gameObject.SetActive (false);
-
+		screenPanel.SetActive (true);
 		Time.timeScale = 0;
 	}
 
 	public void OnResumeClicked() {
+		isGamePaused = false;
 		resume.gameObject.SetActive (false);
 		pause.gameObject.SetActive (true);
-
+		screenPanel.SetActive (false);
 		Time.timeScale = 1;
 	}
 

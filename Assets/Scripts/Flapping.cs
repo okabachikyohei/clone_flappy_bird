@@ -23,6 +23,9 @@ public class Flapping : MonoBehaviour {
 	void Update () {
 
 		if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
+			if (gameController.isGamePaused) 
+				return;
+
 			if (!CanvasButtonClicked()) {
 				if (!gameController.isGameStarted) {
 					gameController.isGameStarted = true;
@@ -40,9 +43,6 @@ public class Flapping : MonoBehaviour {
 		if (gameController.isGameStarted) {
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, 0.0f, -90f), Time.deltaTime * rotateSpeed);
 		}
-
-//		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, 0.0f, -90f), Time.time * rotateSpeed);
-//		transform.Rotate (0.0f, 0.0f, -rotateSpeed);
 	}
 
 	void FixedUpdate() {
