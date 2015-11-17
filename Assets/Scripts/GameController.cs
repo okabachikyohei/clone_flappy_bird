@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour {
 
 	public Button pause;
 	public Button resume;
+	public Button newBtn;
 
 	public GameObject player;
 	public GameObject ground;
@@ -40,6 +41,8 @@ public class GameController : MonoBehaviour {
 	private Animator gameOverAnim;
 	private Animator birdAnim;
 
+	private CanvasGroup newBtnCanvasGroup;
+
 	private static GameController instance;
 
 	public static GameController Instance() {
@@ -63,6 +66,7 @@ public class GameController : MonoBehaviour {
 		groundWidth = sr.bounds.size.x;
 		gameOverAnim = gameOverPanel.GetComponent<Animator> ();
 		birdAnim = player.GetComponent<Animator> ();
+		newBtnCanvasGroup = newBtn.GetComponent<CanvasGroup> ();
 	}
 
 	public void OnPauseClicked() {
@@ -70,6 +74,8 @@ public class GameController : MonoBehaviour {
 		resume.gameObject.SetActive (true);
 		pause.gameObject.SetActive (false);
 		screenPanel.SetActive (true);
+		newBtnCanvasGroup.alpha = 1;
+		newBtnCanvasGroup.interactable = true;
 		Time.timeScale = 0;
 	}
 
@@ -78,11 +84,18 @@ public class GameController : MonoBehaviour {
 		resume.gameObject.SetActive (false);
 		pause.gameObject.SetActive (true);
 		screenPanel.SetActive (false);
+		newBtnCanvasGroup.alpha = 0;
+		newBtnCanvasGroup.interactable = false;
 		Time.timeScale = 1;
 	}
 
 	public void OnOkClicked () {
 		FadeManager.Instance.LoadLevel ("Open", 0.3f);
+	}
+
+	public void OnMenuClicked () {
+//		screenPanel.SetActive (false);
+//		FadeManager.Instance.LoadLevel ("Open", 0.3f);
 	}
 
 	public void GameOver () {
