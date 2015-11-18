@@ -25,7 +25,7 @@ public class Flapping : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
 			if (gameController.isGamePaused) 
 				return;
-
+				
 			if (!CanvasButtonClicked()) {
 				if (!gameController.isGameStarted) {
 					gameController.isGameStarted = true;
