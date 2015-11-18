@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour {
 	public Sprite medalBronze;
 	public Sprite medalSilver;
 	public Sprite medalGold;
+	public Image newBestImage;
 
 	public PerlinShake perlinShake;
 
@@ -124,6 +125,9 @@ public class GameController : MonoBehaviour {
 		SetMedalImage ();
 		repositionCount = 0;
 		medalPointText.text = gamePoint.ToString ("0");
+		if (gamePoint > highestPoint) {
+			newBestImage.gameObject.SetActive(true);
+		}
 		highestPoint = gamePoint >= highestPoint ? gamePoint : highestPoint;
 		highestPointText.text = highestPoint.ToString ("0");
 		gamePoint = 0;
