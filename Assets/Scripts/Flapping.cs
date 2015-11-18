@@ -21,11 +21,12 @@ public class Flapping : MonoBehaviour {
 	}
 
 	void Update () {
-
-		if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
+//		if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
+		TouchInfo info = AppUtil.GetTouch();
+		if (info == TouchInfo.Began) {
 			if (gameController.isGamePaused) 
 				return;
-				
+			
 			if (!CanvasButtonClicked()) {
 				if (!gameController.isGameStarted) {
 					gameController.isGameStarted = true;
@@ -38,6 +39,7 @@ public class Flapping : MonoBehaviour {
 				rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
 				transform.rotation = Quaternion.Euler (0f, 0f, 45f);
 			}
+
 		}
 
 		if (gameController.isGameStarted) {

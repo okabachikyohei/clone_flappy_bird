@@ -32,7 +32,6 @@ public class RepositionTrigger : MonoBehaviour {
 						ground2PipesObj.SetActive(true);
 					}
 				} 
-				return;
 			}
 			if (other.gameObject.name == "lv1_ground1") {
 				ground1Pipes.ShowAndRepositionPipes();
