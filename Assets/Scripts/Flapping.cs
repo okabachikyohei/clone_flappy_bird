@@ -59,8 +59,14 @@ public class Flapping : MonoBehaviour {
 		UnityEngine.EventSystems.EventSystem ct
 			= UnityEngine.EventSystems.EventSystem.current;
 
-		if (! ct.IsPointerOverGameObject() ) 
-			return false;
+		if (Application.isEditor) {
+			if (! ct.IsPointerOverGameObject() ) 
+				return false;
+		} else {
+			if (! ct.IsPointerOverGameObject(0) ) 
+				return false;
+		}
+
 		if (! ct.currentSelectedGameObject ) 
 			return false;
 		if (ct.currentSelectedGameObject.GetComponent<Button>() == null )
