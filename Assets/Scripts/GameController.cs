@@ -11,8 +11,7 @@ public class GameController : MonoBehaviour {
 	public GameObject player;
 	public GameObject ground;
 	public Rigidbody2D rb2D;
-
-	public float force = 5f;
+	
 	public float gravityScale = 1f;
 
 	public bool isGameStarted;
