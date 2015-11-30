@@ -13,11 +13,12 @@ public class Flapping : MonoBehaviour {
 
 	private Rigidbody2D rb2D;
 	private GameController gameController;
-	private Animator startGameAnim;
+	private Animator flappyAnim;
 
 	void Start () {
 		rb2D = GetComponent<Rigidbody2D> ();
 		gameController = GameController.Instance ();
+		flappyAnim = GetComponent<Animator> ();
 	}
 
 	void Update () {
@@ -35,7 +36,8 @@ public class Flapping : MonoBehaviour {
 				}
 				if (gameController.isGameOver) 
 					return;
-				
+
+				flappyAnim.SetTrigger("Flappying");
 				rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
 				transform.rotation = Quaternion.Euler (0f, 0f, 45f);
 			}
